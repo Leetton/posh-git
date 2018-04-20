@@ -1,12 +1,12 @@
 # posh-git Release History
 
-## 1.0.0-beta2 - February 21, 2018
+## 1.0.0-beta2 - April 23, 2018
 
 The 1.0.0 release is targeted specifically at Windows PowerShell 5.x and (cross-platform) PowerShell Core 6.x, both of
 which support writing prompt strings using [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code)
 and classes which enable the enhanced structure of `$GitPromptSettings`.
-Consequently this release introduces BREAKING changes with 0.7.x.
-If you are still on Windows PowerShell 2.0, 3.0 or 4.0, please continue to use the 0.7.x version of posh-git.
+Consequently this release introduces BREAKING changes with 0.x.
+If you are still on Windows PowerShell 2.0, 3.0 or 4.0, please continue to use the 0.x version of posh-git.
 
 > On Windows, support for [Console Virtual Terminal Sequences](https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences)
 was added in Windows 10 version 1511.
@@ -14,8 +14,8 @@ was added in Windows 10 version 1511.
 ### Changed
 
 - Renamed `$GitPromptSettings.BeforeText/DelimText/AfterText` to `$GitPromptSettings.BeforeStatus/DelimStatus/AfterStatus`.
-  This results in easier to read script e.g. this `$GitPromptSettings.BeforeStatus.Text = '[['` instead of this
-  `$GitPromptSettings.BeforeText.Text = '[['`.
+  This results in easier to read script e.g. this `$GitPromptSettings.BeforeStatus.Text = '<['` instead of this
+  `$GitPromptSettings.BeforeText.Text = '<['`.
 - Renamed `$GitPromptSettings.BeforeIndexText/BeforeStashText/AfterStashText` to `$GitPromptSettings.BeforeIndex/BeforeStash/AfterStash`.
 - Renamed `$GitPromptSettigs.EnableWindowTitle` to `$GitPromptSettigs.WindowTitle`.  This setting now takes either a string or a ScriptBlock.
   The default value is a ScriptBlock that takes two parameters: `$GitStatus`, `$IsAdmin`.
@@ -31,7 +31,7 @@ was added in Windows 10 version 1511.
 - New `$GitPromptSettings`:
   - PathStatusSeparator
   - DefaultPromptPath
-  - DefaultPromptMiddle
+  - DefaultPromptBeforeSuffix
   - DefaultPromptDebug
   - DefaultPromptWriteStatusFirst
   - DefaultPromptTimingFormat
@@ -39,6 +39,7 @@ was added in Windows 10 version 1511.
 - New command `Get-PromptPath` which formats the path displayed in the prompt. This command is called from the
   `$GitPromptSettings.DefaultPromptPath` setting.  This command honors the
   `$GitPromptSettings.DefaultPromptAbbreviateHomeDirectory` setting.
+- New `Expand-GitCommand` to allow posh-gits tab expansion functionality to be used by others in their tabexpansion function.
 
 ### Fixed
 
